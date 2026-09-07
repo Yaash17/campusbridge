@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusBridge</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <p><a href="/">← Back to all properties</a></p>
+    <h1>{{ property[1] }}</h1>
+    <p>{% if property[2] %}{{ property[2] }}{% endif %}
+    {% if property[2] and property[3] %} — {% endif %}
+    {% if property[3] %}{{ property[3] }}{% endif %}
+    </p>
+
+    <h2>Reviews</h2>
+    <ul>
+    {% for review in reviews %}
+        <li>Rating: {{ review[2] }}/5 — {{ review[3] }}</li>
+    {% endfor %}
+    </ul>
+    <h2>Write a Review</h2>
+<form action="/property/{{ property[0] }}/review" method="POST">
+    <label>Rating (1-5): <input type="number" name="rating" min="1" max="5" required></label><br>
+    <label>Review: <textarea name="review_text" required></textarea></label><br>
+    <button type="submit">Submit Review</button>
+</form>
+</body>
+</html>

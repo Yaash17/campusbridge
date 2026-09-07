@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusBridge</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Welcome to CampusBridge</h1>
+    <ul>
+    <ul>
+{% for property in properties %}
+    <li>
+        <a href="/property/{{ property[0] }}">{{ property[1] }}</a>
+        {% if property[2] %} — {{ property[2] }}{% endif %}
+        {% if property[3] %} ({{ property[3] }}){% endif %}
+    </li>
+{% endfor %}
+</ul>
+    </ul>
+</body>
+</html>
