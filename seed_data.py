@@ -6,7 +6,12 @@ cursor = connection.cursor()
 # --- Vista Komanwel B already exists from earlier testing ---
 # Remove the placeholder test review and replace it with the real one from the survey
 cursor.execute("SELECT id FROM properties WHERE name = ?", ("Vista Komanwel B",))
-vista_id = cursor.fetchone()[0]
+row = cursor.fetchone()
+if row:
+    vista_id = row[0]
+else:
+    cursor.execute("INSERT INTO properties (name, area, university) VALUES (?, ?, ?)", ("Vista Komanwel B", "Bukit Jalil", "APU"))
+    vista_id = cursor.lastrowid
 
 cursor.execute("DELETE FROM reviews WHERE review_text = ?", ("Good location but slow WiFi.",))
 
