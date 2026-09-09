@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Admin Dashboard</h1>
+
+    <h2>Properties</h2>
+    <ul>
+    {% for property in properties %}
+        <li>
+            #{{ property[0] }} — {{ property[1] }}
+            <form method="POST" action="/admin/delete-property/{{ property[0] }}" style="display:inline">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    {% endfor %}
+    </ul>
+
+    <h2>Reviews</h2>
+    <ul>
+    {% for review in reviews %}
+        <li>
+            #{{ review[0] }} (property #{{ review[1] }}) — {{ review[2] }}/5 — {{ review[3] }}
+            <form method="POST" action="/admin/delete-review/{{ review[0] }}" style="display:inline">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

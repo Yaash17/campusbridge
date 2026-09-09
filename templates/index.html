@@ -1,23 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CampusBridge</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
     <h1>Welcome to CampusBridge</h1>
     <ul>
-    <ul>
-{% for property in properties %}
-    <li>
-        <a href="/property/{{ property[0] }}">{{ property[1] }}</a>
-        {% if property[2] %} — {{ property[2] }}{% endif %}
-        {% if property[3] %} ({{ property[3] }}){% endif %}
-    </li>
-{% endfor %}
-</ul>
+    {% for property in properties %}
+        <li>
+            <a href="/property/{{ property[0] }}">{{ property[1] }}</a>
+            {% if property[2] %} — {{ property[2] }}{% endif %}
+            {% if property[3] %} ({{ property[3] }}){% endif %}
+            <br>
+            {% if property[4] %}
+                ⭐ {{ "%.1f"|format(property[4]) }}/5 ({{ property[5] }} review{{ "s" if property[5] != 1 else "" }})
+            {% else %}
+                <span class="concept">No reviews yet</span>
+            {% endif %}
+        </li>
+    {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

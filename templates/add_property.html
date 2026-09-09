@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <p><a href="/">← Back to all properties</a></p>
+
+    <h1>Add a Property</h1>
+
+    <form method="POST" action="/add-property">
+        <label>Property name:</label>
+        <input type="text" name="name" required>
+
+        <label>Area:</label>
+        <input type="text" name="area">
+
+        <label>University:</label>
+        <input type="text" name="university">
+
+        <button type="submit">Add Property</button>
+    </form>
+{% endblock %}
