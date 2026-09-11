@@ -7,7 +7,7 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: var(--bg);
     color: var(--navy);
     max-width: 700px;
@@ -65,3 +65,222 @@ button {
     cursor: pointer;
 }
 button:hover { opacity: 0.9; }
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+li a {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+body {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 20px;
+    background: #f4f4f2;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin-bottom: 20px;
+}
+
+li {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+a {
+    text-decoration: none;
+}
+
+nav a[href="/add-property"] {
+    background: var(--teal-bright);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+nav a[href="/add-property"]:hover {
+    background: var(--teal);
+}
+
+input[type="text"], input[type="password"], input[type="number"], textarea {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 12px;
+    margin: 6px 0 16px 0;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+button {
+    background: var(--teal-bright);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+button:hover {
+    background: var(--teal);
+}
+
+.delete-btn {
+    background: #ffffff;
+    color: #dc2626;
+    border: 1px solid #dc2626;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+}
+
+.delete-btn:hover {
+    background: #dc2626;
+    color: white;
+}
+
+.filter-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.chip {
+    background: white;
+    color: #374151;
+    border: 1px solid #d1d5db;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.chip.active {
+    background: var(--teal-bright);
+    color: white;
+    border-color: var(--teal-bright);
+}
+
+.star-input {
+    font-size: 1.8rem;
+    color: #d1d5db;
+    cursor: pointer;
+    margin: 6px 0 16px 0;
+}
+
+.star-input i {
+    margin-right: 4px;
+    transition: color 0.1s ease;
+}
+
+.star-input i.selected {
+    color: var(--teal-bright);
+}
+
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.toast {
+    background: var(--navy);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.review-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.review-text.expanded {
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+}
+
+.read-more-btn {
+    display: none;
+    background: none;
+    color: var(--teal-bright);
+    border: none;
+    padding: 4px 0 0 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 0 12px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+.logo {
+    height: 43px;
+    width: auto;
+    display: block;
+}

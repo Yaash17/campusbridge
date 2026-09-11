@@ -9,7 +9,7 @@
         <li>
             #{{ property[0] }} — {{ property[1] }}
             <form method="POST" action="/admin/delete-property/{{ property[0] }}" style="display:inline">
-                <button type="submit">Delete</button>
+                <button type="submit" class="delete-btn">Delete</button>
             </form>
         </li>
     {% endfor %}
@@ -21,7 +21,7 @@
         <li>
             #{{ review[0] }} (property #{{ review[1] }}) — {{ review[2] }}/5 — {{ review[3] }}
             <form method="POST" action="/admin/delete-review/{{ review[0] }}" style="display:inline">
-                <button type="submit">Delete</button>
+                <button type="submit" class="delete-btn">Delete</button>
             </form>
         </li>
     {% endfor %}

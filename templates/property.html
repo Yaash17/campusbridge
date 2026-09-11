@@ -3,21 +3,34 @@
 {% block content %}
     <p><a href="/">← Back to all properties</a></p>
     <h1>{{ property[1] }}</h1>
-    <p>{% if property[2] %}{{ property[2] }}{% endif %}
+    <p>{% if property[2] %}<i class="ti ti-map-pin"></i> {{ property[2] }}{% endif %}
     {% if property[2] and property[3] %} — {% endif %}
     {% if property[3] %}{{ property[3] }}{% endif %}
     </p>
 
     <h2>Reviews</h2>
     <ul>
-    {% for review in reviews %}
-        <li>Rating: {{ review[2] }}/5 — {{ review[3] }}</li>
-    {% endfor %}
-    </ul>
+{% for review in reviews %}
+    <li>
+        <i class="ti ti-star-filled"></i> Rating: {{ review[2] }}/5 —
+        <span class="review-text">{{ review[3] }}</span>
+        <button class="read-more-btn">Read more</button>
+    </li>
+{% endfor %}
+</ul>
     <h2>Write a Review</h2>
-    <form action="/property/{{ property[0] }}/review" method="POST">
-        <label>Rating (1-5): <input type="number" name="rating" min="1" max="5" required></label><br>
-        <label>Review: <textarea name="review_text" required></textarea></label><br>
-        <button type="submit">Submit Review</button>
-    </form>
+    <form action="/property/{{ property[0] }}/review" method="POST" id="review-form">
+    <label>Rating:</label>
+    <div class="star-input" id="star-input">
+        <i class="ti ti-star" data-value="1"></i>
+        <i class="ti ti-star" data-value="2"></i>
+        <i class="ti ti-star" data-value="3"></i>
+        <i class="ti ti-star" data-value="4"></i>
+        <i class="ti ti-star" data-value="5"></i>
+    </div>
+    <input type="hidden" name="rating" id="rating-value" value="0">
+
+    <label>Review: <textarea name="review_text" required></textarea></label><br>
+    <button type="submit">Submit Review</button>
+</form>
 {% endblock %}

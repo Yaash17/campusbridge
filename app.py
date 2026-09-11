@@ -17,8 +17,12 @@ def home():
         GROUP BY properties.id
     """)
     properties = cursor.fetchall()
+
+    cursor.execute("SELECT DISTINCT area FROM properties WHERE area IS NOT NULL AND area != ''")
+    areas = [row[0] for row in cursor.fetchall()]
+
     connection.close()
-    return render_template("index.html", properties=properties)
+    return render_template("index.html", properties=properties, areas=areas)
 
 @app.route("/property/<int:property_id>")
 def property_detail(property_id):
